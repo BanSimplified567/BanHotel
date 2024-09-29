@@ -1,0 +1,66 @@
+.home-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  background-image: url('../images/LuxuryBackground.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  z-index: -2;
+}
+
+.home-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #00000047;
+  z-index: -1;
+}
+
+.homesection-One {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10rem 10rem 2rem 10rem;
+  justify-content: center;
+  color: var(--cl-white);
+  line-height: 1;
+}
+
+.homesection-One h3 {
+  font-size: var(--font-md);
+  font-family: var(--font-Title);
+}
+
+.homesection-One h1 {
+  font-size: var(--font-xl);
+  font-family: var(--font-Title);
+}
+
+.homesection-One h2 {
+  font-size: var(--font-md);
+  font-family: var(--font-Title);
+}
+
+.homesection-Two {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+
+.home-button {
+  background-color: var(--cl-darkGold);
+  color: var(--cl-white);
+  font-family: var(--font-Paragraph);
+  font-weight: 500;
+}

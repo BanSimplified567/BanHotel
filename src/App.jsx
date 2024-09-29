@@ -1,51 +1,36 @@
-// src/router.tsx
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import Facilities from './pages/Facilities';
+import Rooms from './pages/Rooms';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
 import Header from './Components/Header';
-import Contact from './Pages/Contact';
-import Home from './Pages/Home';
-import Facilities from './Pages/Facilities';
-import Rooms from './Pages/Rooms';
+
+const routes = [
+   { path: '/', element: <Home /> },
+   { path: '/facilities', element: <Facilities /> },
+   { path: '/rooms', element: <Rooms /> },
+   { path: '/contact', element: <Contact /> },
+];
 
 const router = createBrowserRouter([
    {
-      element: <Navbar />,
-      children: [
-         {
-            path: '/',
-            element: <Home />,
-            errorElement: <div>Page not found</div>,
-         },
-         {
-            path: '/facilities',
-            element: <Facilities />,
-         },
-         {
-            path: '/contact',
-            element: <Contact />,
-         },
-         {
-            path: '/rooms',
-            element: <Rooms />,
-         },
-         {
-            path: '/contact',
-            element: <Contact />,
-         },
-      ],
+      element: (
+         <header className="header-section">
+            <Header />
+            <main className="appMain">
+               <Outlet />
+            </main>
+         </header>
+      ),
+      children: routes.map(({ path, element }) => ({
+         path,
+         element,
+      })),
    },
 ]);
 
-function Navbar() {
-   return (
-      <div className=" ">
-         <Header />
-         <main>
-            <Outlet /> {/* This is where nested routes will be rendered */}
-         </main>
-      </div>
-   );
+function App() {
+   return <RouterProvider router={router}></RouterProvider>;
 }
-
-const App = () => <RouterProvider router={router}></RouterProvider>;
 
 export default App;

@@ -1,7 +1,9 @@
-export default function Facilities() {
+function Facilities() {
    return (
-      <div>
-         <h1>Facilities </h1>
-      </div>
+      <>
+         <h1>Facilities</h1>
+      </>
    );
 }
+
+export default Facilities;

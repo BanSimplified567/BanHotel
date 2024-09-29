@@ -1,0 +1,113 @@
+/* General navbar styles */
+.navbar-brand {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* Logo brand styling */
+.navbar-brand img {
+  height: clamp(3rem, 10vw, 5rem);
+  width: auto;
+  cursor: pointer;
+  background-color: var(--cl-darkGold);
+  padding: 1rem;
+  border-radius: 0 0 2rem 2rem;
+}
+
+/* Navbar links styling */
+.navbar-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Navbar links styling */
+/* Navbar links styling */
+.navbar-links a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: var(--cl-white);
+  font-size: var(--font-xs);
+  position: relative;
+  /* Set position to relative for absolute positioning of the pseudo-element */
+}
+
+/* Pseudo-element for the border effect */
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  /* Position it absolutely relative to the link */
+  left: 0;
+  /* Align to the left */
+  bottom: 0;
+  /* Position it at the bottom */
+  height: 0.2rem;
+  /* Height of the border */
+  width: 100%;
+  /* Full width */
+  background-color: var(--cl-darkGold);
+  /* Set the background color */
+  transform: scaleY(0);
+  /* Initially scale down to 0 */
+  transition: transform 0.3s ease;
+  /* Smooth transition for scaling */
+}
+
+/* Hover effect to scale the border */
+.navbar-links a:hover::after {
+  transform: scaleY(0.5);
+  /* Scale to full height on hover */
+}
+
+/* Toggle button for mobile screens */
+.navbar-toggle {
+  display: none;
+  /* Hidden by default */
+  cursor: pointer;
+}
+
+/* Hide links by default on mobile */
+.navbar-links.mobile-active {
+  display: flex;
+  /* Show links when active */
+}
+
+/* Mobile-specific styles */
+@media screen and (max-width: 1024px) {
+
+  .navbar-brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .navbar-toggle {
+    display: block;
+    /* Show toggle button on mobile */
+  }
+
+  /* Move the navbar links below the logo */
+  .navbar-links {
+    display: none;
+    justify-content: flex-start;
+    /* Hidden by default on mobile */
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Show the navbar links when mobile-active class is applied */
+  .navbar-links.mobile-active {
+    display: flex;
+    /* Show links when active */
+  }
+
+  .navbar-links a {
+    justify-content: flex-start;
+    width: 100%;
+    /* Ensure links take full width */
+  }
+}
