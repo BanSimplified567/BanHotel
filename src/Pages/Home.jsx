@@ -1,12 +1,14 @@
-import '../styles/home.css';
-import Button from '../Components/Button';
+import { faCircleArrowDown, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import Button from '../Components/Button';
+import WideBeach from '../images/beachWide.png';
+import DoubleRooms from '../images/doubleroom.png';
+import '../styles/home.css';
 
 function Home() {
    return (
       <>
-         <div className="home-container">
+         <div className="home-Container">
             <div className="home-sectionOne">
                <section className="homesection-One">
                   <h3>WELCOME TO</h3>
@@ -19,7 +21,37 @@ function Home() {
                      <FontAwesomeIcon icon={faHouse} />
                      BUY NOW
                   </Button>
+                  <a href="#home-section-two">
+                     <FontAwesomeIcon icon={faCircleArrowDown} className="home-arrow-down" />
+                  </a>
                </section>
+            </div>
+            <div className="home-sectionTwo" id="home-section-two">
+               <p>All our room types are including complementary breakfast</p>
+               <section className="homesectionTwo-One">
+                  <div className="homesectionTwo-Paragraph">
+                     <h1>Luxury redefined</h1>
+                     <p>
+                        Our rooms are designed to transport you into an environment made for
+                        leisure. Take your mind off the day-to-day of home life and find a private
+                        paradise for yourself.
+                     </p>
+                     <Button classEx="home-button">EXPLORE</Button>
+                  </div>
+                  <img src={DoubleRooms} alt="DoubleRooms" />
+               </section>
+               <article className="homesectionTwo-One">
+                  <div className="homesectionTwo-Paragraph">
+                     <h1>Leave your worries in the sand</h1>
+                     <p>
+                        We love life at the beach. Being close to the ocean with access to endless
+                        sandy beach ensures a relaxed state of mind. It seems like time stands still
+                        watching the ocean.
+                     </p>
+                     <Button classEx="home-button">EXPLORE</Button>
+                  </div>
+                  <img src={WideBeach} alt="WideBeach" />
+               </article>
             </div>
          </div>
       </>
