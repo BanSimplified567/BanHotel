@@ -20,7 +20,7 @@
   left: 0;
   height: 120vh;
   width: 100%;
-  background-color: #00000047;
+  background-color: #14274a65;
   z-index: -1;
 }
 
@@ -52,6 +52,27 @@
   }
 }
 
+/* Heading Styles */
+.home-h3,
+.home-h2 {
+  font-size: var(--font-md);
+  font-family: var(--font-Title);
+}
+
+.home-h1 {
+  font-size: var(--font-sm);
+  font-family: var(--font-Title);
+}
+
+.homesection-One .home-h1 {
+  font-size: var(--font-xxl);
+}
+
+.homesection-One .home-h3,
+.homesection-One .home-h2 {
+  font-size: var(--font-sm);
+}
+
 @media screen and (max-width: 768px) {
   .homesection-One {
     padding: 2rem 1rem;
@@ -67,17 +88,6 @@
   }
 }
 
-/* Heading Styles */
-.homesection-One .home-h3,
-.homesection-One .home-h2 {
-  font-size: var(--font-md);
-  font-family: var(--font-Title);
-}
-
-.homesection-One .home-h1 {
-  font-size: var(--font-xl);
-  font-family: var(--font-Title);
-}
 
 /* Section Two Styling */
 .homesection-Two {
@@ -98,6 +108,15 @@
   gap: 2rem;
 }
 
+.home-sectionTwo>p {
+  text-align: center;
+  font-size: var(--font-sm);
+  font-family: var(--font-Paragraph);
+  line-height: 1.5;
+  color: var(--cl-darkBlue);
+  font-weight: 500;
+}
+
 /* Arrow Icon */
 .home-arrow-down {
   font-size: 2rem;
@@ -111,40 +130,32 @@
   transition: transform 0.3s ease-in-out, color 0.3s ease;
 }
 
-/* Button Styling */
-.home-button {
-  background-color: var(--cl-darkGold);
-  color: var(--cl-white);
-  font-family: var(--font-Paragraph);
-  font-weight: 500;
-}
-
 
 .homesectionTwo-One {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2rem;
+  color: var(--cl-darkBlue);
 }
 
 @media screen and (max-width: 1024px) {
   .homesectionTwo-One {
     flex-direction: column;
     justify-content: center;
-    gap: 2rem;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .home-sectionTwo>.home-p {
+  .home-sectionTwo>p {
     text-align: center;
   }
 }
 
 .homesectionTwo-One img {
-  width: 45rem;
+  width: 40rem;
   max-width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -162,9 +173,78 @@
   gap: 2rem;
   justify-content: center;
   align-items: flex-start;
+  position: relative;
 }
+
+.homesectionTwo-Paragraph::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  /* Position the border to the left */
+  top: 50%;
+  /* Start at the middle */
+  transform: translateY(-50%);
+  /* Move it up by 50% of its height to center it */
+  height: 80%;
+  /* Set a specific height for the border */
+  width: 2px;
+  /* Width of the border */
+  background-color: var(--cl-darkBlue);
+  /* Dark blue border color */
+}
+
+@media screen and (max-width: 768px) {
+  .homesectionTwo-Paragraph {
+    gap: 1rem;
+  }
+}
+
 
 .homesectionTwo-Paragraph p {
   word-break: keep-all;
   width: 80%;
+}
+
+.home-sectionThree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.homesectionThree-One {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.home-sectionThree-button {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  gap: 1rem;
+}
+
+/* Hover Effect */
+.h-sectionThree-button:hover {
+  background-color: var(--cl-darkBlue);
+  color: var(--cl-darkBlue);
+  /* Changes to a lighter shade of gold */
+  transform: scale(1.1);
+  /* Grows slightly on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* Adds a subtle shadow */
+}
+
+.h-sectionThree-button:active {
+  transform: scale(2);
+  /* Resets to original size on click */
+  box-shadow: none;
+  /* Removes shadow on click */
 }

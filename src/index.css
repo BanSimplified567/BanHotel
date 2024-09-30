@@ -32,3 +32,11 @@ html {
 body {
   font-family: var(--font-Paragraph);
 }
+
+p {
+  font-size: var(--font-xs);
+}
+
+a {
+  text-decoration: none;
+}
