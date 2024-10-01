@@ -9,8 +9,8 @@ function Footer() {
          <footer className="footer">
             <section className="footer-logo">
                <img src={Luxury} alt="Luxury Hotels" />
-               <p className="home-p">497 Evergreen Rd. Roseville, CA 95673</p>
-               <p className="home-p">+44 345 678 903</p>
+               <p className="home-p">567, Sibonga St, Pandan Cebu, 6020</p>
+               <p className="home-p">+63</p>
                <p className="home-p">luxury.hotels@gmail.com</p>
             </section>
             <section className="footer-navigation">

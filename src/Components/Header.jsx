@@ -20,9 +20,9 @@ const Header = () => {
             </NavLink>
             <div className="navbar-toggle" onClick={toggleNavbar}>
                {isMobile ? (
-                  <FontAwesomeIcon icon={faXmark} size="2x" />
+                  <FontAwesomeIcon className="close" icon={faXmark} size="2x" />
                ) : (
-                  <FontAwesomeIcon icon={faBars} size="2x" />
+                  <FontAwesomeIcon className="open" icon={faBars} size="2x" />
                )}
             </div>
             <div className={`navbar-links ${isMobile ? 'mobile-active' : ''}`}>

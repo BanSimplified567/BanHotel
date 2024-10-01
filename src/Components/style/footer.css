@@ -2,10 +2,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #002147;
+  background-color: var(--cl-darkBlue);
   color: var(--cl-white);
   padding: 3rem;
+  margin-top: 2rem;
   gap: 2rem;
+  position: relative;
+  /* Ensure the footer is positioned relative */
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    flex-wrap: wrap;
+  }
+}
+
+.footer::after {
+  content: "";
+  /* Required for the pseudo-element */
+  position: absolute;
+  top: -2rem;
+  /* Adjust this value for vertical position */
+  left: 50%;
+  /* Center horizontally */
+  transform: translate(-50%, 0) rotate(45deg);
+  /* Adjust to truly center and rotate */
+  width: 100px;
+  /* Set the width of the diamond */
+  height: 100px;
+  /* Set the height of the diamond */
+  background-color: var(--cl-darkBlue);
+  /* Change this color to your desired one */
+  z-index: -1;
+  /* Send it behind other content */
 }
 
 .footer-logo {
@@ -15,7 +44,6 @@
 .footer-logo img {
   filter: brightness(0) invert(1);
 }
-
 
 .footer-logo p {
   font-family: var(--font-Paragraph);
@@ -55,6 +83,13 @@
 
 .footer-input {
   display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .footer-input {
+    flex-wrap: wrap;
+  }
 }
 
 .footer-button {

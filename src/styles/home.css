@@ -6,12 +6,15 @@
   left: 0;
   width: 100%;
   height: 120vh;
+  background-color: #14274a65;
   background-image: url('../images/LuxuryBackground.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   z-index: -2;
 }
+
+
 
 .home-sectionOne::before {
   content: '';
@@ -25,27 +28,30 @@
 }
 
 .home-sectionOne {
-  height: 100vh;
+  height: 120vh;
   z-index: 1;
+}
+
+@media screen and (max-height: 600px) {
+  .home-sectionOne {
+    height: 90vh;
+  }
 }
 
 /* Section One Styling */
 .homesection-One {
-  display: block;
-  width: 100%;
-  padding: 10rem 10rem 2rem 10rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  padding: 10rem 10rem 2rem 10rem;
   color: var(--cl-white);
   line-height: 1;
+  width: 1024px;
 }
 
 @media screen and (max-width: 1024px) {
   .homesection-One {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5rem 1rem 0 1rem;
     text-align: left;
     color: var(--cl-white);
     line-height: 1;
@@ -53,9 +59,13 @@
 }
 
 /* Heading Styles */
-.home-h3,
-.home-h2 {
+.home-h3 {
   font-size: var(--font-md);
+  font-family: var(--font-Paragraph);
+}
+
+.home-h2 {
+  font-size: var(--font-lg);
   font-family: var(--font-Title);
 }
 
@@ -68,23 +78,21 @@
   font-size: var(--font-xxl);
 }
 
-.homesection-One .home-h3,
-.homesection-One .home-h2 {
-  font-size: var(--font-sm);
-}
 
 @media screen and (max-width: 768px) {
   .homesection-One {
     padding: 2rem 1rem;
+    margin-top: 10rem;
+    justify-content: center;
   }
 
   .homesection-One .home-h1 {
-    font-size: var(--font-lg);
+    font-size: var(--font-xl);
   }
 
   .homesection-One .home-h3,
   .homesection-One .home-h2 {
-    font-size: var(--font-sm);
+    font-size: var(--font-lg);
   }
 }
 
@@ -100,7 +108,8 @@
 }
 
 .home-sectionTwo {
-  display: flex;
+  display: block;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -134,7 +143,7 @@
 .homesectionTwo-One {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 2rem;
   color: var(--cl-darkBlue);
 }
@@ -190,7 +199,7 @@
   width: 2px;
   /* Width of the border */
   background-color: var(--cl-darkBlue);
-  /* Dark blue border color */
+
 }
 
 @media screen and (max-width: 768px) {
@@ -213,6 +222,7 @@
   justify-content: center;
   padding: 2rem;
   gap: 2rem;
+  color: var(--cl-darkBlue);
 }
 
 .homesectionThree-One {

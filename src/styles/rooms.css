@@ -1,0 +1,78 @@
+/* Section One Background */
+.rooms-sectionOne::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120vh;
+  background-image: url('../images/SingleRoomWithLaptop.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+.rooms-sectionOne::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 120vh;
+  width: 100%;
+  background-color: #14274a65;
+  z-index: -1;
+}
+
+.rooms-sectionOne {
+  height: 110vh;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .rooms-sectionOne {
+    height: 90vh;
+  }
+}
+
+.rooms-SectionCategory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.rooms-Carousel {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.rooms-Slide {
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.rooms-SlideImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.rooms-Details {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.room-toggle-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
