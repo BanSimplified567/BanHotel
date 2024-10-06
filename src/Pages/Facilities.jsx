@@ -8,9 +8,9 @@ import TheGYM from '../images/theGym.png';
 import TheSPA from '../images/theSPA.png';
 
 import Button from '../Components/Button';
-import '../styles/facilities.css';
-import SlidingQuotes from '../Components/SlidingQoutes';
 import Footer from '../Components/Footer';
+import SlidingQuotes from '../Components/SlidingQuotes';
+import '../styles/facilities.css';
 
 function Facilities() {
    const images = [

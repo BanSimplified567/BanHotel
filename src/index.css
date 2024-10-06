@@ -19,6 +19,22 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  :root {
+    --font-xxl: clamp(3rem, 2.5vw, 5rem);
+    /* Adjusted for smaller screens */
+    --font-xl: clamp(2.5rem, 2vw, 4rem);
+    /* Adjusted for smaller screens */
+    --font-lg: clamp(2rem, 1.5vw, 3rem);
+    /* Adjusted for smaller screens */
+    --font-md: clamp(1.5rem, 1vw, 2rem);
+    /* Adjusted for smaller screens */
+    --font-sm: clamp(1rem, 0.5vw, 1rem);
+    --font-xs: clamp(0.8rem, 0.3vw, 0.8rem);
+    /* Increased base size */
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

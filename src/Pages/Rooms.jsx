@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import Button from '../Components/Button';
-import '../styles/rooms.css';
-import SlidingQoutes from '../Components/SlidingQoutes';
 import Footer from '../Components/Footer';
+import SlidingQuotes from '../Components/SlidingQuotes';
+import '../styles/rooms.css';
 
 import RoomsCategory2 from '../images/annie-spratt-Eg1qcIitAuA-unsplash.jpg'; // Sample image
 import RoomsCategory from '../images/beachWide.png'; // Sample image
@@ -18,21 +18,21 @@ function Rooms() {
          price: '$147 Avg/night',
          image: RoomsCategory,
          description:
-            'Our Single Room, designed for solo travelers or business guests, offers a queen-size bed, complimentary high-speed Wi-Fi, flat-screen TV, 24-hour room service, work desk with an ergonomic chair, en-suite bathroom with toiletries and bathrobes, and daily housekeeping—combining comfort, convenience, and affordability for a perfect stay.',
+            'Our Single Room is perfect for solo travelers and business guests, featuring a queen-size bed, free high-speed Wi-Fi, flat-screen TV, 24-hour room service, a work desk with ergonomic chair, en-suite bathroom with toiletries and bathrobes, and daily housekeeping—offering comfort, convenience, and affordability.',
       },
       {
          title: 'DOUBLE ROOM',
          price: '$182 Avg/day',
          image: RoomsCategory2,
          description:
-            'Our Double Room offers comfort and intimacy, ideal for couples or friends traveling together, featuring two plush double beds with high-quality linens, a spacious layout with stylish decor and ample natural light, a modern ensuite bathroom with complimentary toiletries and fluffy towels, in-room comforts like complimentary Wi-Fi, a flat-screen TV with cable channels, and a mini-fridge stocked with beverages, convenient extras including a work desk, coffee maker, and safe for valuables, and 24/7 room service for delicious meals in the comfort of your room—making it the perfect retreat to unwind after a day of exploring or working.',
+            'Our Double Room provides a cozy retreat for couples or friends, featuring two plush double beds with high-quality linens, a stylish and spacious layout with natural light, and a modern ensuite bathroom with complimentary toiletries. Enjoy in-room amenities like free Wi-Fi, a flat-screen TV with cable, a mini-fridge, a work desk, a coffee maker, a safe for valuables, and 24/7 room service for a relaxing stay after a day of exploration or work.',
       },
       {
          title: 'BIG ROOM',
          price: '$265 Avg/night',
          image: RoomsCategory3,
          description:
-            'Our Big Room is the perfect choice for travelers seeking extra space and luxury, featuring a generous layout with a king-size bed and a separate sitting area with a sofa bed to accommodate up to four guests comfortably, an elegant ensuite bathroom with a soaking tub, walk-in shower, and premium bath products, state-of-the-art amenities including a large flat-screen TV, high-speed internet access, and a sound system for an enhanced entertainment experience, a convenient kitchenette with a microwave, sink, and dining table for casual dining, breathtaking views of the city skyline or serene landscapes, and exclusive access to a dedicated concierge service for assistance with reservations and personalized experiences—making it an ideal option for both business and leisure travelers looking for an unforgettable stay.',
+            'Our Big Room offers spacious luxury for travelers, featuring a king-size bed, a separate sitting area with a sofa bed for up to four guests, and an elegant ensuite bathroom with a soaking tub and walk-in shower. Enjoy amenities like a large flat-screen TV, high-speed internet, a sound system, and a convenient kitchenette with dining space. With stunning views of the city skyline or serene landscapes and exclusive concierge service, it’s the perfect choice for both business and leisure travelers seeking an unforgettable stay.',
       },
    ];
 
@@ -40,6 +40,7 @@ function Rooms() {
    const [showDetails, setShowDetails] = useState([false, false, false]);
    const [showModal, setShowModal] = useState(false);
    const [selectedDetail, setSelectedDetail] = useState(null);
+   const [notificationVisible, setNotificationVisible] = useState(false);
 
    const detailsToggle = (index) => {
       setShowDetails((prevDetails) => {
@@ -57,6 +58,13 @@ function Rooms() {
    const closeModal = () => {
       setShowModal(false);
       setSelectedDetail(null);
+   };
+
+   const handleBookNowClick = () => {
+      setNotificationVisible(true);
+      setTimeout(() => {
+         setNotificationVisible(false);
+      }, 3000); // Hide notification after 3 seconds
    };
 
    return (
@@ -86,7 +94,7 @@ function Rooms() {
             <div className="home-section-two" id="home-section-two">
                <section className="facilities-sectionTwo">
                   <h2 className="home-h2">ROOMS AND RATES</h2>
-                  <p>
+                  <p className="home-p">
                      Each of our bright, light-flooded rooms come with everything you could possibly
                      need for a comfortable stay. And yes, comfort isn’t our only objective, we also
                      value good design, sleek contemporary furnishing complemented by the rich tones
@@ -147,12 +155,17 @@ function Rooms() {
                            <p>{selectedDetail.description}</p>
                         </div>
                      </div>
-                     <Button classEx="home-button">BOOK NOW</Button>
+                     <Button classEx="home-button" onClick={handleBookNowClick}>
+                        BOOK NOW
+                     </Button>
                   </div>
                </div>
             )}
+
+            {/* Notification for successful booking */}
+            {notificationVisible && <div className="notification">Successfully booked!</div>}
          </div>
-         <SlidingQoutes />
+         <SlidingQuotes />
          <Footer />
       </>
    );

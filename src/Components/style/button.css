@@ -11,13 +11,3 @@
   color: var(--cl-white);
   font-family: var(--font-Paragraph);
 }
-
-.button:hover {
-  background-color: var(--cl-darkBlue);
-  color: var(--cl-white);
-  /* Changes to a lighter shade of gold */
-  transform: scale(1.1);
-  /* Grows slightly on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  /* Adds a subtle shadow */
-}

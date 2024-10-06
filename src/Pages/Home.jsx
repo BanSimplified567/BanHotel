@@ -1,11 +1,11 @@
 import { faCircleArrowDown, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../Components/Button';
+import Footer from '../Components/Footer';
+import SlidingQuotes from '../Components/SlidingQuotes';
 import WideBeach from '../images/beachWide.png';
 import DoubleRooms from '../images/doubleroom.png';
 import '../styles/home.css';
-import Footer from '../Components/Footer';
-import SlidingQuotes from '../Components/SlidingQoutes';
 
 function Home() {
    return (

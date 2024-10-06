@@ -1,12 +1,9 @@
-import { lazy, Suspense } from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Header from './Components/Header';
-
-// Lazy load the pages
-const Facilities = lazy(() => import('./pages/Facilities'));
-const Rooms = lazy(() => import('./pages/Rooms'));
-const Home = lazy(() => import('./pages/Home'));
-const Contact = lazy(() => import('./pages/Contact.jsx'));
+import Facilities from './pages/Facilities'; // Import directly
+import Rooms from './pages/Rooms'; // Import directly
+import Contact from './pages/Contact'; // Import directly
+import Home from './pages/Home'; // Import directly
 
 // Routes configuration
 const routes = [
@@ -21,12 +18,9 @@ const router = createBrowserRouter([
       element: (
          <header className="header-section">
             <Header />
-            {/* Suspense to show fallback while assets are being loaded */}
-            <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
-               <main className="appMain">
-                  <Outlet />
-               </main>
-            </Suspense>
+            <main className="appMain">
+               <Outlet />
+            </main>
          </header>
       ),
       children: routes.map(({ path, element }) => ({
