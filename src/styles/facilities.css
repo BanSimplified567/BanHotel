@@ -1,4 +1,6 @@
-.facilities-Container {}
+.facilities-Container {
+  overflow: hidden;
+}
 
 /* Section One Background */
 .facilities-sectionOne::after {

@@ -1,6 +1,7 @@
 import { faCircleArrowDown, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 import PoolSideBar from '../images/poolSideBar.png';
 import Restaurant from '../images/restaurant.png';
 import SwimmingPool from '../images/swimmingPool.png';
@@ -13,6 +14,8 @@ import SlidingQuotes from '../Components/SlidingQuotes';
 import '../styles/facilities.css';
 
 function Facilities() {
+   const [lightboxImage, setLightboxImage] = useState(null);
+
    const images = [
       { src: TheGYM, alt: 'The Gym' },
       { src: TheSPA, alt: 'The SPA' },
@@ -20,19 +23,48 @@ function Facilities() {
       { src: SwimmingPool, alt: 'Swimming Pool' },
       { src: Restaurant, alt: 'Restaurant' },
    ];
+
+   const openLightbox = (imageSrc) => {
+      setLightboxImage(imageSrc);
+   };
+
+   const closeLightbox = () => {
+      setLightboxImage(null);
+   };
+
    return (
       <>
          <div className="facilities-Container">
-            <div className="facilities-sectionOne ">
-               <section className="homesection-One">
+            {/* Animate the welcome section */}
+            <motion.div className="facilities-sectionOne">
+               <motion.section
+                  className="homesection-One"
+                  initial={{ opacity: 0, x: -100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
                   <h3 className="home-h3">WELCOME TO</h3>
-                  <h1 className="home-h1">LUXURY</h1>
-                  <h2 className="home-h2">HOTELS</h2>
+                  <motion.h1
+                     className="home-h1"
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ delay: 0.5 }}
+                  >
+                     LUXURY
+                  </motion.h1>
+                  <motion.h2
+                     className="home-h2"
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ delay: 1 }}
+                  >
+                     HOTELS
+                  </motion.h2>
                   <p className="home-p">
                      Book your stay and enjoy Luxury <br />
                      redefined at the most affordable rates.
                   </p>
-               </section>
+               </motion.section>
                <section className="homesection-Two">
                   <Button classEx="home-button">
                      <FontAwesomeIcon icon={faHouse} />
@@ -42,33 +74,78 @@ function Facilities() {
                      <FontAwesomeIcon icon={faCircleArrowDown} className="home-arrow-down" />
                   </a>
                </section>
-            </div>
+            </motion.div>
+
+            {/* Lazy-load images in the facilities section */}
             <div className="home-section-two" id="home-section-two">
                <section className="facilities-sectionTwo">
-                  <h2 className="home-h2">FACILITIES</h2>
-                  <p>
+                  <motion.h2
+                     className="home-h2"
+                     initial={{ opacity: 0, x: -100 }}
+                     whileInView={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.5 }}
+                  >
+                     FACILITIES
+                  </motion.h2>
+                  <motion.p
+                     initial={{ opacity: 0, x: -100 }}
+                     whileInView={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.5 }}
+                  >
                      We want your stay at our lush hotel to be truly unforgettable. That is why we
                      give special attention to all of your needs so that we can ensure an experience
-                     quite uniquw. Luxury hotels offers the perfect setting with stunning views for
+                     quite unique. Luxury hotels offers the perfect setting with stunning views for
                      leisure and our modern luxury resort facilities will help you enjoy the best of
                      all.
-                  </p>
+                  </motion.p>
                </section>
-               <section className="facilities-sectionThree">
+
+               <motion.section
+                  className="facilities-sectionThree"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+               >
                   {images.map((image, index) => (
-                     <img className="facilities-img" key={index} src={image.src} alt={image.alt} />
+                     <motion.img
+                        className="facilities-img"
+                        key={index}
+                        src={image.src}
+                        alt={image.alt}
+                        onClick={() => openLightbox(image.src)}
+                        whileHover={{ scale: 1.05 }} // Hover effect
+                        whileTap={{ scale: 0.95 }} // Tap effect
+                     />
                   ))}
-               </section>
+               </motion.section>
+
+               <motion.section
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
+                  <SlidingQuotes />
+               </motion.section>
+               <motion.section
+                  initial={{ opacity: 0, y: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
+                  <Footer />
+               </motion.section>
             </div>
-            <SlidingQuotes />
-            <Footer />
+            {/* Lightbox for viewing large images */}
+            {lightboxImage && (
+               <div className="lightbox" onClick={closeLightbox}>
+                  <img src={lightboxImage} alt="Facility" className="lightbox-img" />
+                  <button className="lightbox-close" onClick={closeLightbox}>
+                     Close
+                  </button>
+               </div>
+            )}
          </div>
       </>
    );
 }
 
 export default Facilities;
-{
-   /* <SlidingQuotes />
-         <Footer /> */
-}

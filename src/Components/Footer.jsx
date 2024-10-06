@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Luxury from '../images/LogoName.png'; // Adjust the import path as necessary
 import Button from './Button';
 import './style/footer.css';
+import { motion } from 'framer-motion';
 
 function EmailPage({ email }) {
    const [isVisible, setIsVisible] = useState(true);
@@ -59,7 +60,12 @@ function Footer() {
    return (
       <>
          {isSubscribed && <EmailPage email={email} />}
-         <footer className="footer">
+         <motion.footer
+            className="footer"
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+         >
             <section className="footer-logo">
                <NavLink to="/">
                   <img src={Luxury} alt="Luxury Hotels" />
@@ -71,7 +77,7 @@ function Footer() {
             <section className="footer-navigation">
                <ul>
                   <li>
-                     <NavLink to="/about">About Us</NavLink>
+                     <a href="https://www.facebook.com/him.blacklion567">About Us</a>
                   </li>
                   <li>
                      <NavLink to="/contact">Contact</NavLink>
@@ -122,7 +128,7 @@ function Footer() {
                   </Button>
                </div>
             </section>
-         </footer>
+         </motion.footer>
       </>
    );
 }

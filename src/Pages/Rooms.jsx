@@ -71,16 +71,40 @@ function Rooms() {
       <>
          <div className="rooms-Container">
             <div className="rooms-sectionOne">
-               <section className="homesection-One">
+               <motion.section
+                  className="homesection-One"
+                  initial={{ opacity: 0, x: -100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
                   <h3 className="home-h3">WELCOME TO</h3>
-                  <h1 className="home-h1">LUXURY</h1>
-                  <h2 className="home-h2">HOTELS</h2>
+                  <motion.h1
+                     className="home-h1"
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ delay: 0.5 }}
+                  >
+                     LUXURY
+                  </motion.h1>
+                  <motion.h2
+                     className="home-h2"
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ delay: 1 }}
+                  >
+                     HOTELS
+                  </motion.h2>
                   <p className="home-p">
                      Book your stay and enjoy Luxury <br />
                      redefined at the most affordable rates.
                   </p>
-               </section>
-               <section className="homesection-Two">
+               </motion.section>
+               <motion.section
+                  className="homesection-Two"
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
                   <Button classEx="home-button">
                      <FontAwesomeIcon icon={faHouse} />
                      BUY NOW
@@ -88,10 +112,16 @@ function Rooms() {
                   <a href="#home-section-two">
                      <FontAwesomeIcon icon={faCircleArrowDown} className="home-arrow-down" />
                   </a>
-               </section>
+               </motion.section>
             </div>
 
-            <div className="home-section-two" id="home-section-two">
+            <motion.div
+               className="home-section-two"
+               id="home-section-two"
+               initial={{ opacity: 0, x: -100 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.5 }}
+            >
                <section className="facilities-sectionTwo">
                   <h2 className="home-h2">ROOMS AND RATES</h2>
                   <p className="home-p">
@@ -101,12 +131,18 @@ function Rooms() {
                      of nature’s palette as visible from our rooms’ sea-view windows and terraces.
                   </p>
                </section>
-            </div>
+            </motion.div>
 
             {/* Image sliding section */}
             <div className="rooms-SectionCategory">
                {details.map((detail, index) => (
-                  <motion.div key={index} className="rooms-Carousel">
+                  <motion.div
+                     key={index}
+                     className="rooms-Carousel"
+                     initial={{ opacity: 0, x: 100 }}
+                     whileInView={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.5 }}
+                  >
                      <AnimatePresence mode="wait">
                         <motion.div className="rooms-Slide">
                            <img
@@ -117,7 +153,12 @@ function Rooms() {
                         </motion.div>
                      </AnimatePresence>
 
-                     <div className="rooms-Details">
+                     <motion.section
+                        className="rooms-Details"
+                        initial={{ opacity: 0, x: 100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                     >
                         <div className="rooms-Title">
                            <h1 className="home-h1">{detail.title}</h1>
                         </div>
@@ -136,7 +177,7 @@ function Rooms() {
                         {showDetails[index] && (
                            <p className="home-p rooms-toggle-description">{detail.description}</p>
                         )}
-                     </div>
+                     </motion.section>
                   </motion.div>
                ))}
             </div>
@@ -164,9 +205,22 @@ function Rooms() {
 
             {/* Notification for successful booking */}
             {notificationVisible && <div className="notification">Successfully booked!</div>}
+
+            <motion.section
+               initial={{ opacity: 0, x: 100 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.5 }}
+            >
+               <SlidingQuotes />
+            </motion.section>
+            <motion.section
+               initial={{ opacity: 0, x: -100 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.5 }}
+            >
+               <Footer />
+            </motion.section>
          </div>
-         <SlidingQuotes />
-         <Footer />
       </>
    );
 }

@@ -1,3 +1,8 @@
+.home-Container {
+  overflow: hidden;
+  /* Hide overflow for the parent container */
+}
+
 /* Section One Background */
 .home-sectionOne::after {
   content: '';

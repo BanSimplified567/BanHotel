@@ -1,3 +1,7 @@
+.rooms-Container {
+  overflow: hidden;
+}
+
 /* Section One Background */
 .rooms-sectionOne::after {
   content: '';
