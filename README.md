@@ -1,8 +1,28 @@
-# React + Vite
+# BanHotel Website Repository
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the BanHotel website repository! This project showcases the hotel’s services, rooms, and features. You can clone this repository to run it locally or modify it as per your needs.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Prerequisites](#prerequisites)
+- [Cloning the Repository](#cloning-the-repository)
+- [Usage](#usage)
+- [License](#license)
+
+## Prerequisites
+
+Make sure you have the following installed:
+
+- [Git](https://git-scm.com/downloads)
+- A code editor (e.g., [Visual Studio Code](https://code.visualstudio.com/))
+
+## Cloning the Repository
+
+To clone this repository, follow these steps:
+
+1. Open your terminal (Command Prompt, PowerShell, or Terminal).
+2. Navigate to the directory where you want to clone the repository.
+3. Run the following command:
+
+   ```bash
+   git clone https://github.com/yourusername/BanHotel.git
