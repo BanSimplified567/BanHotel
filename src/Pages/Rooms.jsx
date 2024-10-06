@@ -2,9 +2,9 @@ import { faCircleArrowDown, faHouse, faPlus } from '@fortawesome/free-solid-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Button from '../Components/Button';
 import Footer from '../Components/Footer';
-import SlidingQuotes from '../Components/SlidingQuotes';
 import '../styles/rooms.css';
 
 import RoomsCategory2 from '../images/annie-spratt-Eg1qcIitAuA-unsplash.jpg'; // Sample image
@@ -12,6 +12,8 @@ import RoomsCategory from '../images/beachWide.png'; // Sample image
 import RoomsCategory3 from '../images/eddi-aguirre-ZAVHbpOn4Jk-unsplash.jpg'; // Sample image
 
 function Rooms() {
+   const navigate = useNavigate(); // Initialize navigate function
+
    const details = [
       {
          title: 'SINGLE ROOM',
@@ -67,6 +69,13 @@ function Rooms() {
       }, 3000); // Hide notification after 3 seconds
    };
 
+   const handleBuyNowClick = () => {
+      const section = document.getElementById('home-section-two');
+      if (section) {
+         section.scrollIntoView({ behavior: 'smooth' });
+      }
+   };
+
    return (
       <>
          <div className="rooms-Container">
@@ -105,7 +114,8 @@ function Rooms() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
                >
-                  <Button classEx="home-button">
+                  <Button classEx="home-button" onClick={handleBuyNowClick}>
+                     {/* Attach the handler here */}
                      <FontAwesomeIcon icon={faHouse} />
                      BUY NOW
                   </Button>
@@ -203,24 +213,13 @@ function Rooms() {
                </div>
             )}
 
-            {/* Notification for successful booking */}
-            {notificationVisible && <div className="notification">Successfully booked!</div>}
-
-            <motion.section
-               initial={{ opacity: 0, x: 100 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               transition={{ duration: 0.5 }}
-            >
-               <SlidingQuotes />
-            </motion.section>
-            <motion.section
-               initial={{ opacity: 0, x: -100 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               transition={{ duration: 0.5 }}
-            >
-               <Footer />
-            </motion.section>
+            {notificationVisible && (
+               <div className="notification">
+                  Your booking request has been sent! We will contact you shortly.
+               </div>
+            )}
          </div>
+         <Footer />
       </>
    );
 }

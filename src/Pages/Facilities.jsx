@@ -2,6 +2,7 @@ import { faCircleArrowDown, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import PoolSideBar from '../images/poolSideBar.png';
 import Restaurant from '../images/restaurant.png';
 import SwimmingPool from '../images/swimmingPool.png';
@@ -15,6 +16,7 @@ import '../styles/facilities.css';
 
 function Facilities() {
    const [lightboxImage, setLightboxImage] = useState(null);
+   const navigate = useNavigate(); // Initialize navigate
 
    const images = [
       { src: TheGYM, alt: 'The Gym' },
@@ -30,6 +32,11 @@ function Facilities() {
 
    const closeLightbox = () => {
       setLightboxImage(null);
+   };
+
+   // Function to handle button click for navigating to the rooms page
+   const handleButtonClick = () => {
+      navigate('/rooms'); // Replace with your actual rooms page path
    };
 
    return (
@@ -66,7 +73,9 @@ function Facilities() {
                   </p>
                </motion.section>
                <section className="homesection-Two">
-                  <Button classEx="home-button">
+                  <Button classEx="home-button" onClick={handleButtonClick}>
+                     {' '}
+                     {/* Add onClick here */}
                      <FontAwesomeIcon icon={faHouse} />
                      BUY NOW
                   </Button>

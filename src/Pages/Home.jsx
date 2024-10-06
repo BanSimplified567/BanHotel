@@ -2,6 +2,7 @@ import { faCircleArrowDown, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Button from '../Components/Button';
 import Footer from '../Components/Footer';
 import SlidingQuotes from '../Components/SlidingQuotes';
@@ -10,6 +11,9 @@ import DoubleRooms from '../images/doubleroom.png';
 import '../styles/home.css';
 
 function Home() {
+   // Initialize navigate function
+   const navigate = useNavigate();
+
    // Define animation variants for the slide-in effect
    const slideInVariants = {
       hidden: { opacity: 0, x: 100 },
@@ -19,6 +23,16 @@ function Home() {
    // Use the Intersection Observer with framer-motion's useInView
    const [refSectionOne, inViewSectionOne] = useInView({ triggerOnce: true, threshold: 0.1 });
    const [refSectionTwo, inViewSectionTwo] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+   // Handler for button click to navigate to rooms page
+   const handleBuyNowClick = () => {
+      navigate('/rooms'); // Navigate to the rooms page
+   };
+
+   // Handler for explore button click to navigate to rooms page
+   const handleExploreClick = () => {
+      navigate('/rooms'); // Navigate to the rooms page
+   };
 
    return (
       <>
@@ -53,7 +67,7 @@ function Home() {
                   </p>
                </motion.section>
                <section className="homesection-Two">
-                  <Button classEx="home-button">
+                  <Button classEx="home-button" onClick={handleBuyNowClick}>
                      <FontAwesomeIcon icon={faHouse} />
                      BUY NOW
                   </Button>
@@ -102,7 +116,9 @@ function Home() {
                         leisure. Take your mind off the day-to-day of home life and find a private
                         paradise for yourself.
                      </motion.p>
-                     <Button classEx="home-button">EXPLORE</Button>
+                     <Button classEx="home-button" onClick={handleExploreClick}>
+                        EXPLORE
+                     </Button>
                   </motion.div>
                   <img src={DoubleRooms} alt="DoubleRooms" />
                </motion.article>
@@ -126,7 +142,9 @@ function Home() {
                         sandy beach ensures a relaxed state of mind. It seems like time stands still
                         watching the ocean.
                      </p>
-                     <Button classEx="home-button">EXPLORE</Button>
+                     <Button classEx="home-button" onClick={handleExploreClick}>
+                        EXPLORE
+                     </Button>
                   </motion.div>
                   <img src={WideBeach} alt="WideBeach" />
                </motion.article>
