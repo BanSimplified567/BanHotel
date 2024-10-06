@@ -1,3 +1,31 @@
+.email-overlay {
+  position: fixed;
+  /* Fixed position to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  /* Ensure it's on top of other elements */
+}
+
+.email-container {
+  background-color: white;
+  /* Background for the message */
+  padding: 20px;
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  /* Optional: Box shadow */
+  text-align: center;
+  /* Center text */
+}
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -38,7 +66,10 @@
 }
 
 .footer-logo {
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  gap: 1rem;
 }
 
 .footer-logo img {
@@ -83,12 +114,15 @@
 
 .footer-input {
   display: flex;
+  flex: 1;
+  gap: 1rem;
   align-items: center;
 }
 
 @media screen and (max-width: 1024px) {
   .footer-input {
     flex-wrap: wrap;
+
   }
 }
 

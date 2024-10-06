@@ -1,33 +1,62 @@
 import { faCircleArrowDown, faHouse, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '../Components/Button';
-import RoomsCategory from '../images/Group 68.png'; // Sample image
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import Button from '../Components/Button';
 import '../styles/rooms.css';
+import SlidingQoutes from '../Components/SlidingQoutes';
+import Footer from '../Components/Footer';
+
+import RoomsCategory2 from '../images/annie-spratt-Eg1qcIitAuA-unsplash.jpg'; // Sample image
+import RoomsCategory from '../images/beachWide.png'; // Sample image
+import RoomsCategory3 from '../images/eddi-aguirre-ZAVHbpOn4Jk-unsplash.jpg'; // Sample image
 
 function Rooms() {
-   const details = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quidem.`;
-   const [showDetails, setShowDetails] = useState(false); // State for toggling room details
-   const detailsToggle = () => {
-      setShowDetails((prev) => !prev); // Toggle details
+   const details = [
+      {
+         title: 'SINGLE ROOM',
+         price: '$147 Avg/night',
+         image: RoomsCategory,
+         description:
+            'Our Single Room, designed for solo travelers or business guests, offers a queen-size bed, complimentary high-speed Wi-Fi, flat-screen TV, 24-hour room service, work desk with an ergonomic chair, en-suite bathroom with toiletries and bathrobes, and daily housekeeping—combining comfort, convenience, and affordability for a perfect stay.',
+      },
+      {
+         title: 'DOUBLE ROOM',
+         price: '$182 Avg/day',
+         image: RoomsCategory2,
+         description:
+            'Our Double Room offers comfort and intimacy, ideal for couples or friends traveling together, featuring two plush double beds with high-quality linens, a spacious layout with stylish decor and ample natural light, a modern ensuite bathroom with complimentary toiletries and fluffy towels, in-room comforts like complimentary Wi-Fi, a flat-screen TV with cable channels, and a mini-fridge stocked with beverages, convenient extras including a work desk, coffee maker, and safe for valuables, and 24/7 room service for delicious meals in the comfort of your room—making it the perfect retreat to unwind after a day of exploring or working.',
+      },
+      {
+         title: 'BIG ROOM',
+         price: '$265 Avg/night',
+         image: RoomsCategory3,
+         description:
+            'Our Big Room is the perfect choice for travelers seeking extra space and luxury, featuring a generous layout with a king-size bed and a separate sitting area with a sofa bed to accommodate up to four guests comfortably, an elegant ensuite bathroom with a soaking tub, walk-in shower, and premium bath products, state-of-the-art amenities including a large flat-screen TV, high-speed internet access, and a sound system for an enhanced entertainment experience, a convenient kitchenette with a microwave, sink, and dining table for casual dining, breathtaking views of the city skyline or serene landscapes, and exclusive access to a dedicated concierge service for assistance with reservations and personalized experiences—making it an ideal option for both business and leisure travelers looking for an unforgettable stay.',
+      },
+   ];
+
+   // State for toggling room details (for each room category)
+   const [showDetails, setShowDetails] = useState([false, false, false]);
+   const [showModal, setShowModal] = useState(false);
+   const [selectedDetail, setSelectedDetail] = useState(null);
+
+   const detailsToggle = (index) => {
+      setShowDetails((prevDetails) => {
+         const newDetails = [...prevDetails];
+         newDetails[index] = !newDetails[index];
+         return newDetails;
+      });
    };
 
-   // Images array for sliding
-   const images = [RoomsCategory, RoomsCategory, RoomsCategory];
+   const handlePriceClick = (index) => {
+      setSelectedDetail(details[index]);
+      setShowModal(true);
+   };
 
-   // State to track current slide
-   const [currentSlide, setCurrentSlide] = useState(0);
-
-   // Handle drag functionality (framer-motion)
-   const handleDragEnd = (event, info) => {
-      if (info.offset.x < -100) {
-         // Dragged to the left, go to the next slide
-         setCurrentSlide((prev) => (prev + 1) % images.length);
-      } else if (info.offset.x > 100) {
-         // Dragged to the right, go to the previous slide
-         setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
-      }
+   const closeModal = () => {
+      setShowModal(false);
+      setSelectedDetail(null);
    };
 
    return (
@@ -68,39 +97,63 @@ function Rooms() {
 
             {/* Image sliding section */}
             <div className="rooms-SectionCategory">
-               <motion.div
-                  className="rooms-Carousel"
-                  drag="x"
-                  onDragEnd={handleDragEnd} // Detect end of drag to change slide
-                  dragConstraints={{ left: 0, right: 0 }} // Prevent overscrolling
-               >
-                  <motion.div
-                     className="rooms-Slide"
-                     key={currentSlide} // Update slide key to trigger animation
-                     initial={{ opacity: 0, x: 300 }} // Slide in animation (from right)
-                     animate={{ opacity: 1, x: 0 }} // Animate to visible
-                     exit={{ opacity: 0, x: -300 }} // Slide out animation (to left)
-                     transition={{ duration: 0.5 }}
-                  >
-                     <img src={images[currentSlide]} alt="Room" className="rooms-SlideImage" />
-                  </motion.div>
-               </motion.div>
+               {details.map((detail, index) => (
+                  <motion.div key={index} className="rooms-Carousel">
+                     <AnimatePresence mode="wait">
+                        <motion.div className="rooms-Slide">
+                           <img
+                              src={detail.image}
+                              alt={`${detail.title}`}
+                              className="rooms-SlideImage"
+                           />
+                        </motion.div>
+                     </AnimatePresence>
 
-               {/* Room details section */}
-               <div className="rooms-Details">
-                  <h1>SINGLE ROOM</h1>
-                  <div className="room-toggle-details">
-                     <div className="rooms-details-Toggle">
-                        <Button onClick={detailsToggle}>
-                           <FontAwesomeIcon icon={faPlus} />
-                        </Button>
-                        <p className="home-p">VIEW ROOM DETAILS</p>
+                     <div className="rooms-Details">
+                        <div className="rooms-Title">
+                           <h1 className="home-h1">{detail.title}</h1>
+                        </div>
+                        <div className="room-toggle-details">
+                           <div className="room-toggle-button">
+                              <Button classEx="home-button" onClick={() => detailsToggle(index)}>
+                                 <FontAwesomeIcon icon={faPlus} />
+                              </Button>
+                              <p className="home-p">VIEW ROOM DETAILS</p>
+                           </div>
+
+                           <Button classEx="home-button" onClick={() => handlePriceClick(index)}>
+                              {detail.price}
+                           </Button>
+                        </div>
+                        {showDetails[index] && (
+                           <p className="home-p rooms-toggle-description">{detail.description}</p>
+                        )}
                      </div>
-                  </div>
-                  {showDetails && <p>{details}</p>}
-               </div>
+                  </motion.div>
+               ))}
             </div>
+
+            {showModal && selectedDetail && (
+               <div className="modal-overlay">
+                  <div className="modal-content">
+                     <Button classEx="close-modal" onClick={closeModal}>
+                        &times;
+                     </Button>
+                     <div className="rooms-modal-description">
+                        <img src={selectedDetail.image} alt={selectedDetail.title} />
+                        <div className="modal-details">
+                           <h2 className="home-h3">{selectedDetail.title}</h2>
+                           <p>{selectedDetail.price}</p>
+                           <p>{selectedDetail.description}</p>
+                        </div>
+                     </div>
+                     <Button classEx="home-button">BOOK NOW</Button>
+                  </div>
+               </div>
+            )}
          </div>
+         <SlidingQoutes />
+         <Footer />
       </>
    );
 }

@@ -24,55 +24,162 @@
   z-index: -1;
 }
 
-.rooms-sectionOne {
-  height: 110vh;
-  z-index: 1;
-}
-
-@media screen and (max-width: 768px) {
-  .rooms-sectionOne {
-    height: 90vh;
-  }
-}
-
 .rooms-SectionCategory {
   display: flex;
+  gap: 3rem;
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
 }
 
 .rooms-Carousel {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
+  width: clamp(60%, 60rem, 100%);
+  height: 100%;
+  object-fit: cover;
   overflow: hidden;
   position: relative;
+
 }
 
 .rooms-Slide {
   width: 100%;
-  height: auto;
-  position: relative;
+  height: 100%;
+  object-fit: cover;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .rooms-SlideImage {
   width: 100%;
-  height: auto;
+  height: 50vh;
   object-fit: cover;
-  border-radius: 8px;
-}
-
-.rooms-Details {
-  margin-top: 1.5rem;
-  text-align: center;
 }
 
 .room-toggle-details {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+
+}
+
+.rooms-Details {
+  display: flex;
+  text-align: center;
+  gap: 1rem;
+  flex-direction: column;
+  border: solid 1px var(--cl-darkBlue);
+  border-radius: 0 0 8px 8px;
+}
+
+.rooms-Title {
+  width: 100%;
+  background-color: var(--cl-darkBlue);
+  color: var(--cl-white);
+  padding: 2rem;
+}
+
+.room-toggle-button {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  justify-content: flex-start;
+}
+
+.rooms-toggle-description {
+  padding: 2rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  z-index: 1000;
+  /* Ensure the modal is on top */
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 2rem;
+  background: var(--cl-white);
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  max-width: 80%;
+  width: auto;
+  height: auto;
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.modal-content img {
+  width: 25rem;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  z-index: 999;
+  /* Space between image and close button */
+}
+
+@media screen and (max-width: 481px) {
+  .modal-content {
+    row-gap: 2rem;
+  }
+
+  .modal-content img {
+    width: 100%;
+  }
+}
+
+.rooms-modal-description {
+  display: flex;
+  column-gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .rooms-modal-description {
+    flex-wrap: wrap;
+  }
+
+  .modal-content img {
+    margin-top: 4rem;
+  }
+}
+
+.close-modal {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  border: none;
+  background: transparent;
+  font-size: 4rem;
+  cursor: pointer;
+  color: var(--cl-darkBlue);
+}
+
+@media screen and (max-width: 768px) {
+  .close-modal {
+    font-size: var(--font-lg);
+    width: 100%;
+    background-color: var(--cl-darkBlue);
+    z-index: 1;
+    color: var(--cl-white);
+  }
 }

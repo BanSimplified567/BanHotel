@@ -43,8 +43,7 @@ function Facilities() {
                   </a>
                </section>
             </div>
-            <br />
-            <div className="home-sectionTwo" id="home-section-two">
+            <div className="home-section-two" id="home-section-two">
                <section className="facilities-sectionTwo">
                   <h2 className="home-h2">FACILITIES</h2>
                   <p>
