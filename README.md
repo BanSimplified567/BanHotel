@@ -25,4 +25,4 @@ To clone this repository, follow these steps:
 3. Run the following command:
 
    ```bash
-   git clone https://github.com/yourusername/BanHotel.git
+   git clone https://github.com/BanSimplified567/BanHotel.git
