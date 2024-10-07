@@ -32,6 +32,13 @@
   color: var(--cl-white);
   font-size: var(--font-xs);
   position: relative;
+  transition: color 0.3s ease;
+  /* Add smooth color transition */
+}
+
+.navbar-links a:hover {
+  color: var(--cl-darkBlue);
+  /* Text color changes on hover */
 }
 
 /* Pseudo-element for the border effect */

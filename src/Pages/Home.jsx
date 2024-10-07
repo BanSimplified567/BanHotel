@@ -1,7 +1,6 @@
 import { faCircleArrowDown, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Button from '../Components/Button';
 import Footer from '../Components/Footer';
@@ -13,21 +12,6 @@ import '../styles/home.css';
 function Home() {
    // Initialize navigate function
    const navigate = useNavigate();
-
-   // Define animation variants for the slide-in effect
-   const slideInVariants = {
-      hidden: { opacity: 0, x: 100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 1 } },
-   };
-
-   // Use the Intersection Observer with framer-motion's useInView
-   const [refSectionOne, inViewSectionOne] = useInView({ triggerOnce: true, threshold: 0.1 });
-   const [refSectionTwo, inViewSectionTwo] = useInView({ triggerOnce: true, threshold: 0.1 });
-
-   // Handler for button click to navigate to rooms page
-   const handleBuyNowClick = () => {
-      navigate('/rooms'); // Navigate to the rooms page
-   };
 
    // Handler for explore button click to navigate to rooms page
    const handleExploreClick = () => {
@@ -66,26 +50,24 @@ function Home() {
                      redefined at the most affordable rates.
                   </p>
                </motion.section>
-               <section className="homesection-Two">
-                  <Button classEx="home-button" onClick={handleBuyNowClick}>
+               <motion.section
+                  className="homesection-Two"
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
+                  <Button classEx="home-button" onClick={handleExploreClick}>
                      <FontAwesomeIcon icon={faHouse} />
                      BOOK NOW
                   </Button>
                   <a href="#home-section-two">
                      <FontAwesomeIcon icon={faCircleArrowDown} className="home-arrow-down" />
                   </a>
-               </section>
+               </motion.section>
             </div>
 
             {/* Section Two - with slide-in animation */}
-            <motion.section
-               className="home-sectionTwo"
-               id="home-section-two"
-               ref={refSectionOne}
-               variants={slideInVariants}
-               initial="hidden"
-               animate={inViewSectionOne ? 'visible' : 'hidden'}
-            >
+            <motion.section className="home-sectionTwo" id="home-section-two">
                <motion.p
                   initial={{ opacity: 0, x: -100 }} // Start off-screen with 0 opacity
                   whileInView={{ opacity: 1, x: 0 }} // Animate to full opacity and original position when in view
@@ -99,12 +81,7 @@ function Home() {
                   whileInView={{ opacity: 1, x: 0 }} // Animate to full opacity and original position when in view
                   transition={{ duration: 0.5 }} // Duration of 0.5 seconds
                >
-                  <motion.div
-                     className="homesectionTwo-Paragraph"
-                     variants={slideInVariants}
-                     initial="hidden"
-                     animate={inViewSectionOne ? 'visible' : 'hidden'}
-                  >
+                  <motion.div className="homesectionTwo-Paragraph">
                      <h1 className="home-h1">Luxury redefined</h1>
                      <motion.p
                         className="home-p"
@@ -129,13 +106,7 @@ function Home() {
                   whileInView={{ opacity: 1, x: 0 }} // Animate to full opacity and original position when in view
                   transition={{ duration: 0.5 }} // Duration of 0.5 seconds
                >
-                  <motion.div
-                     className="homesectionTwo-Paragraph"
-                     variants={slideInVariants}
-                     initial="hidden"
-                     animate={inViewSectionTwo ? 'visible' : 'hidden'}
-                     ref={refSectionTwo}
-                  >
+                  <motion.div className="homesectionTwo-Paragraph">
                      <h1 className="home-h1">Leave your worries in the sand</h1>
                      <p className="home-p">
                         We love life at the beach. Being close to the ocean with access to endless
