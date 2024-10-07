@@ -36,11 +36,6 @@
   /* Add smooth color transition */
 }
 
-.navbar-links a:hover {
-  color: var(--cl-darkBlue);
-  /* Text color changes on hover */
-}
-
 /* Pseudo-element for the border effect */
 .navbar-links a::after {
   content: "";
@@ -107,7 +102,7 @@
   .navbar-links.mobile-active {
     display: flex;
     font-family: var(--font-Title);
-    background: rgba(255, 255, 255, 0.148);
+    background: rgba(0, 0, 0, 0.148);
     /* Semi-transparent white */
     backdrop-filter: blur(10px);
     /* Blur effect for glassmorphism */
