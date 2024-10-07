@@ -69,7 +69,7 @@ function Home() {
                <section className="homesection-Two">
                   <Button classEx="home-button" onClick={handleBuyNowClick}>
                      <FontAwesomeIcon icon={faHouse} />
-                     BUY NOW
+                     BOOK NOW
                   </Button>
                   <a href="#home-section-two">
                      <FontAwesomeIcon icon={faCircleArrowDown} className="home-arrow-down" />
