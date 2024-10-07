@@ -2,14 +2,13 @@ import { faCircleArrowDown, faHouse, faPlus } from '@fortawesome/free-solid-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Button from '../Components/Button';
 import Footer from '../Components/Footer';
 import '../styles/rooms.css';
 
-import RoomsCategory2 from '../images/annie-spratt-Eg1qcIitAuA-unsplash.jpg'; // Sample image
-import RoomsCategory from '../images/beachWide.png'; // Sample image
-import RoomsCategory3 from '../images/eddi-aguirre-ZAVHbpOn4Jk-unsplash.jpg'; // Sample image
+import RoomsCategory2 from '../images/doubleroom.png'; // Sample image
+import RoomsCategory from '../images/SingleRoomWithLaptop.png'; // Sample image
+import RoomsCategory3 from '../images/frames-for-your-heart-FqqiAvJejto-unsplash.jpg'; // Sample image
 
 function Rooms() {
    const details = [
