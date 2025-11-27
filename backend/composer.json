@@ -1,0 +1,21 @@
+{
+    "name": "bannie/backend",
+    "description": "BanHotel",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bannie\\Backend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bansimplified567",
+            "email": "bansimplified567@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
